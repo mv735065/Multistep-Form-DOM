@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Multistep Form</title>
+  </head>
+  <body>
+    <div class="content">
+      <aside class="sidebar">
+        <div class="step1 steps">
+          <span class="span1">1</span>
+          <div>
+            <span>step 1</span>
+            <h4>YOUR INFO</h4>
+          </div>
+        </div>
+        <div class="step2 steps">
+          <span class="span2">2</span>
+          <div>
+            <span>step 2</span>
+            <h4>SELECT PLAN</h4>
+          </div>
+        </div>
+        <div class="step3 steps">
+          <span class="span3">3</span>
+          <div>
+            <span>step 3</span>
+            <h4>ADD-ONS</h4>
+          </div>
+        </div>
+        <div class="step4 steps">
+          <span class="span4">4</span>
+          <div>
+            <span>step 4</span>
+            <h4>SUMMARY</h4>
+          </div>
+        </div>
+      </aside>
+      <section class="main-section">
+        <div class="personal-info">
+          <h1>Personal Info</h1>
+          <p>Please provide your name,eamil address, and phone number.</p>
+          <div class="name">
+            <label for="name">Name</label>
+            <input type="text" placeholder="e.g. Stephen King" required />
+          </div>
+          <div class="email">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div class="number">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="number" required />
+          </div>
+        </div>
+        <div class="foooter">
+            <button type="button">Back</button>
+            <button type="button">Next Step</button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

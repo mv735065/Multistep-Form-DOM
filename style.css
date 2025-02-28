@@ -1,0 +1,68 @@
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+   align-items: center;
+}
+.content{
+    width: 75vw;
+    height: 75vh;
+    border: 1px solid red;
+    display: flex;
+    gap: 1rem;
+}
+
+.sidebar{
+    flex: 1 1 25%;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 1.5rem;
+    padding-top: 2rem;
+    padding-left:2rem;
+}
+
+.main-section{
+    flex: 1 1 75%;
+    border: 1px solid;
+
+}
+.steps{
+display: flex;
+gap: 1rem;
+border: 1px solid;
+align-items: center;
+}
+
+.steps div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.steps >span{
+    border: 1px solid red;
+ width: 2.5rem;
+ height: 2.5rem;
+ border-radius: 50%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+}
+
+.main-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* padding: ; */
+}
+
+.personal-info{
+    border: 1px solid;
+    margin: 0 auto;
+}
