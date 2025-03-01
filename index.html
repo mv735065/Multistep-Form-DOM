@@ -13,7 +13,7 @@
     <title>Multistep Form</title>
     <style>
         * {
-            /* border: 1px solid; */
+            border: 1px solid;
             font-family: "Montserrat", sans-serif;
             /* font-size: 16px; */
         }
@@ -21,7 +21,7 @@
 </head>
 
 <body class="flex justify-center items-center bg-[hsl(217,100%,97%)]">
-    <div class="content w-[60vw] flex bg-white rounded-[1rem]">
+    <div class="content w-[60vw] flex bg-white rounded-[1rem] ">
         <aside
             class="sidebar p-8 flex-1 basis-1/4 flex flex-col gap-6 bg-[url(./accessts/bg-sidebar-desktop.svg)] bg-cover bg-no-repeat bg-center m-4 rounded-[1rem]">
             <div class="step1 steps flex items-center gap-4 mt-4">
@@ -56,8 +56,8 @@
             </div>
         </aside>
         <section class="main-section flex-1 basis-3/4">
-
-            <form method="post" class="personal-info flex flex-col justify-between m-16 w-fit mx-auto gap-3 mb-8 hidden">
+            <form method="post"
+                class="personal-info flex flex-col justify-between m-16 w-fit mx-auto gap-3 mb-8 hidden">
                 <h1 class="font-bold text-3xl">Personal Info</h1>
 
                 <p class="text-[hsl(231,11%,63%)]">
@@ -99,49 +99,56 @@
                 </div>
             </form>
 
-
-            <form method="post" id="selectOption" class=" flex flex-col justify-between m-16 w-3/4 mx-auto gap-3 mb-8 ">
+            <form method="post" id="selectOption" class="flex flex-col m-16 w-3/4 mx-auto gap-3 mb-8">
                 <h1 class="font-bold text-3xl">Select your plan</h1>
 
                 <p class="text-[hsl(231,11%,63%)]">
-                   You have the  option of monthly or yearly billing.
+                    You have the option of monthly or yearly billing.
                 </p>
-                <div class="grid grid-cols-3   mt-4 gap-4 ">
-                    <div class="name p-4 flex flex-col gap-2 justify-end border border-red-200">
-                        <img src="./accessts/icon-arcade.svg" alt="Arcade Icon" class="object-left-top w-12 h-12">
+                <div class="grid grid-cols-3 mt-4 gap-4 plan-option">
+                    <div
+                        class="arcade p-4 flex flex-col gap-2  border rounded-[1rem] border-[hsl(243,100%,62%)] relative">
+                        <img src="./accessts/icon-arcade.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
 
-                       <p class="mt-8">Arcade</p>
-                       <span>$9/mon</span>
+                        <p class="mt-8">Arcade</p>
+                        <span class="text-sm text-[hsl(231,11%,63%)]">$9/mo</span>
+                        <span class="text-sm text-[hsl(231,11%,63%)]  freetrail hidden " >2 months free</span>
                     </div>
-                    <div class="name p-4 flex flex-col gap-2 justify-end border  ">
-                        <img src="./accessts/icon-arcade.svg" alt="Arcade Icon" class="object-left-top w-12 h-12">
+                    <div class="advance p-4 flex flex-col gap-2 justify-end border rounded-[1rem] border-gray-300">
+                        <img src="./accessts/icon-advanced.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
 
-                       <p class="mt-8">Arcade</p>
-                       <span>$9/mon</span>
-                    </div>
-                    <div class="name p-4 flex flex-col gap-2 justify-end border ">
-                        <img src="./accessts/icon-arcade.svg" alt="Arcade Icon" class="object-left-top w-12 h-12">
+                        <p class="">Advanced</p>
+                        <span class="text-sm" style="color: hsl(231, 11%, 63%)">$12/mo</span>
+                        <span class="text-sm text-[hsl(231,11%,63%)]  freetrail hidden " >2 months free</span>
 
-                       <p class="mt-8">Arcade</p>
-                       <span>$9/mon</span>
                     </div>
-                  
+                    <div class="pro p-4 flex flex-col gap-2 justify-end border rounded-[1rem] border-gray-300">
+                        <img src="./accessts/icon-pro.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
+
+                        <p class="mt-8">Pro</p>
+                        <span class="text-sm" style="color: hsl(231, 11%, 63%)">$15/mo</span>
+                        <span class="text-sm text-[hsl(231,11%,63%)]  freetrail hidden" >2 months free</span>
+
+                    </div>
                 </div>
-                <div id="chooseOption" class=" mt-4 bg-red-500">
-                    <span>Monthly</span>
-                    <label  class="toggle-switch">
-                        <input id="toggle" type="checkbox" />
-                        <span class="slider"></span>
+
+                <div id="chooseOption"
+                    class="border p-4 flex justify-center gap-4 rounded-[1rem] bg-[hsl(231,100%,99%)] mt-8 mb-12">
+                    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Monthly</span>
+
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer" id="monthlyOrYearly" />
+                        <div
+                            class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600">
+                        </div>
                     </label>
-                    <span>Yearly</span>
 
+                    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Yearly</span>
                 </div>
-                
 
-                <div class="foooter mt-16 flex justify-between">
-                    <button type="button"
-                        class=" border px-4 py-2 rounded-[0.5rem] w-auto bg-[hsl(213,96%,18%)] text-white font-medium">
-                        Back
+                <div class="foooter mt-10 flex justify-between">
+                    <button type="button" class="px-4 py-2 rounded-[0.5rem] w-auto text-[hsl(231,11%,63%)] font-medium">
+                        Go Back
                     </button>
                     <button type="submit"
                         class="border px-4 py-2 rounded-[0.5rem] w-auto bg-[hsl(213,96%,18%)] text-white font-medium">
