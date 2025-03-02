@@ -63,30 +63,31 @@ let chooseOption=document.querySelector('#chooseOption');
 let arcade=document.querySelector('.arcade span');
 let advance=document.querySelector('.advance span');
 let pro=document.querySelector('.pro span');
-let freetrail=document.querySelector('.freetrail');
 
-let planOption=document.querySelectorAll('.plan-option div');
+let planOption=document.querySelectorAll('.plan-option div' );
 
 chooseOption.addEventListener('click', (event) => {
   if (monthlyOrYearlyInput.checked) {
     pro.innerText = '$150/yr';
     arcade.innerText = '$90/yr';
     advance.innerText = '$120/yr';
-    freetrail.classList.remove('hidden');
-
-    // for (let i = 0; i < 3; i++) {
-    //   let freetrail = document.createElement('span');
-    //   freetrail.classList.add("freetrail");
-    //   freetrail.innerText = '2 months free';
-    //   freetrail.style.fontSize = '0.75rem';
-    //   freetrail.style.color='hsl(231, 11%, 63%)';
-
-    //   planOption[i].append(freetrail);
-    // }
+    console.log(planOption);
+    
+            for(let i=0;i<3;i++) {
+          let element=planOption[i].querySelector(('.freetrail'));
+      element.classList.remove('hidden');
+     let test=planOption[i].querySelector('h5');
+     test.classList.add('hidden');
+    };
+    
+   
   } else {
-    // for (let i = 0; i < 3; i++) {
-    //   planOption[i].querySelector('.freetrail')?.remove();
-    // }
+    for(let i=0;i<3;i++) {
+      let element=planOption[i].querySelector(('.freetrail'));
+  element.classList.add('hidden');
+ let test=planOption[i].querySelector('h5');
+ test.classList.remove('hidden');
+};
 
     arcade.innerText = '$9/mo';
     advance.innerText = '$12/mo';

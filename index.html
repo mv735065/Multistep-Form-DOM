@@ -13,7 +13,7 @@
     <title>Multistep Form</title>
     <style>
         * {
-            border: 1px solid;
+            /* border: 1px solid; */
             font-family: "Montserrat", sans-serif;
             /* font-size: 16px; */
         }
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </aside>
-        <section class="main-section flex-1 basis-3/4">
+        <section class="main-section flex-1 basis-3/4 ">
             <form method="post"
                 class="personal-info flex flex-col justify-between m-16 w-fit mx-auto gap-3 mb-8 hidden">
                 <h1 class="font-bold text-3xl">Personal Info</h1>
@@ -99,31 +99,34 @@
                 </div>
             </form>
 
-            <form method="post" id="selectOption" class="flex flex-col m-16 w-3/4 mx-auto gap-3 mb-8">
+            <form method="post" id="selectOption" class="flex flex-col m-16 w-3/4 mx-auto gap-3 mb-8 h-[60vh]">
                 <h1 class="font-bold text-3xl">Select your plan</h1>
 
                 <p class="text-[hsl(231,11%,63%)]">
                     You have the option of monthly or yearly billing.
                 </p>
-                <div class="grid grid-cols-3 mt-4 gap-4 plan-option">
+                <div class="grid grid-cols-3 mt-4 gap-4 plan-option" style="height: 180px;">
                     <div
-                        class="arcade p-4 flex flex-col gap-2  border rounded-[1rem] border-[hsl(243,100%,62%)] relative">
-                        <img src="./accessts/icon-arcade.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
-
+                        class="arcade p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-[hsl(243,100%,62%)] " >
+                        
+                        <img src="./accessts/icon-arcade.svg" alt="Arcade Icon" class="object-left-top w-12 h-12 "/>
+                         <h5 clas="test"></h5>
                         <p class="mt-8">Arcade</p>
                         <span class="text-sm text-[hsl(231,11%,63%)]">$9/mo</span>
                         <span class="text-sm text-[hsl(231,11%,63%)]  freetrail hidden " >2 months free</span>
                     </div>
-                    <div class="advance p-4 flex flex-col gap-2 justify-end border rounded-[1rem] border-gray-300">
-                        <img src="./accessts/icon-advanced.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
+                    <div class="advance p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300">
+                        <img src="./accessts/icon-advanced.svg" alt="Arcade Icon" class="object-left-top w-12 h-12 " />
+                        <h5 clas="test"></h5>
 
-                        <p class="">Advanced</p>
+                        <p class="mt-8">Advanced</p>
                         <span class="text-sm" style="color: hsl(231, 11%, 63%)">$12/mo</span>
                         <span class="text-sm text-[hsl(231,11%,63%)]  freetrail hidden " >2 months free</span>
 
                     </div>
-                    <div class="pro p-4 flex flex-col gap-2 justify-end border rounded-[1rem] border-gray-300">
+                    <div class="pro p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300">
                         <img src="./accessts/icon-pro.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
+                        <h5 clas="test"></h5>
 
                         <p class="mt-8">Pro</p>
                         <span class="text-sm" style="color: hsl(231, 11%, 63%)">$15/mo</span>
