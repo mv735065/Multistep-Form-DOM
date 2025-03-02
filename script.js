@@ -3,13 +3,22 @@ let content = document.querySelector(".content");
 let sidebar = document.querySelector(".sidebar");
 let mainSection = document.querySelector(".main-section");
 let form = document.querySelector(".personal-info");
+let steps = document.querySelectorAll(".steps");
 
+let userData = {
+  isMothly: true,
+  package: "arcade",
+};
+let packageDetails = {
+  arcade: 9,
+  advance: 12,
+  pro: 15,
+};
 
-let selectOptionForm=document.querySelector('#selectOption');
+let presentStep = 1;
+changeStatusOfSteps();
 
-let monthlyOrYearlyInput=document.querySelector('#monthlyOrYearly');
-
-let selectOption = document.querySelector("#selectOption");
+let selectOptionForm = document.querySelector("#selectOption");
 
 form.addEventListener("submit", (event) => {
   console.log("clicked");
@@ -54,47 +63,130 @@ form.addEventListener("submit", (event) => {
 
   if (isValid) {
     form.classList.add("hidden");
-    selectOption.classList.remove("hidden");
+
+    selectOptionForm.classList.remove("hidden");
+
+    presentStep += 1;
+    changeStatusOfSteps();
   }
 });
 
+let monthlyOrYearlyInput = document.querySelector("#monthlyOrYearly");
 
-let chooseOption=document.querySelector('#chooseOption');
-let arcade=document.querySelector('.arcade span');
-let advance=document.querySelector('.advance span');
-let pro=document.querySelector('.pro span');
+let chooseOption = document.querySelector("#chooseOption");
+chooseOption.style.backgroundColor = "hsl(231, 100%, 99%)";
+let arcadeSpan = document.querySelector(".arcade span");
+let advanceSpan = document.querySelector(".advance span");
+let proSpan = document.querySelector(".pro span");
 
-let planOption=document.querySelectorAll('.plan-option div' );
+let planOptionDiv = document.querySelectorAll(".plan-option div");
+changeBorderOfPackages(planOptionDiv[0]);
 
-chooseOption.addEventListener('click', (event) => {
-  if (monthlyOrYearlyInput.checked) {
-    pro.innerText = '$150/yr';
-    arcade.innerText = '$90/yr';
-    advance.innerText = '$120/yr';
-    console.log(planOption);
-    
-            for(let i=0;i<3;i++) {
-          let element=planOption[i].querySelector(('.freetrail'));
-      element.classList.remove('hidden');
-     let test=planOption[i].querySelector('h5');
-     test.classList.add('hidden');
-    };
-    
-   
+let planOption = document.querySelector(".plan-option");
+
+planOption.addEventListener("click", (event) => {
+  let parent = event.target;
+  if (event.target.classList.contains("option")) {
+    parent = event.target;
   } else {
-    for(let i=0;i<3;i++) {
-      let element=planOption[i].querySelector(('.freetrail'));
-  element.classList.add('hidden');
- let test=planOption[i].querySelector('h5');
- test.classList.remove('hidden');
-};
+    parent = event.target.parentElement;
+  }
 
-    arcade.innerText = '$9/mo';
-    advance.innerText = '$12/mo';
-    pro.innerText = '$15/mo';
+  let option = parent.classList[0];
+  userData.package = option;
+  changeBorderOfPackages(parent);
+});
+
+function changeBorderOfPackages(parent) {
+  planOptionDiv.forEach((div) => {
+    if (div == parent) {
+      div.style.borderColor = "hsl(243, 100%, 62%)";
+    } else {
+      div.style.borderColor = "hsl(229, 24%, 87%)";
+    }
+  });
+}
+
+chooseOption.addEventListener("click", (event) => {
+  if (monthlyOrYearlyInput.checked) {
+    userData["isMothly"] = false;
+    proSpan.innerText = "$150/yr";
+    arcadeSpan.innerText = "$90/yr";
+    advanceSpan.innerText = "$120/yr";
+    document.querySelector(".monthly").style.color = "hsl(231, 11%, 63%)";
+    document.querySelector(".yearly").style.color = "hsl(225, 82%, 20%)";
+
+    for (let i = 0; i < 3; i++) {
+      let element = planOptionDiv[i].querySelector(".freetrail");
+      element.classList.remove("hidden");
+      let test = planOptionDiv[i].querySelector("h5");
+      test.classList.add("hidden");
+    }
+  } else {
+    userData["isMothly"] = true;
+    for (let i = 0; i < 3; i++) {
+      let element = planOptionDiv[i].querySelector(".freetrail");
+      element.classList.add("hidden");
+      let test = planOptionDiv[i].querySelector("h5");
+      test.classList.remove("hidden");
+    }
+    document.querySelector(".monthly").style.color = "hsl(225, 82%, 20%)";
+    document.querySelector(".yearly").style.color = "hsl(231, 11%, 63%)";
+
+    arcadeSpan.innerText = "$9/mo";
+    advanceSpan.innerText = "$12/mo";
+    proSpan.innerText = "$15/mo";
   }
 });
 
+let selectOptionFormBackButton=selectOptionForm.querySelector('.footer button');
+
+selectOptionFormBackButton.addEventListener('click',(event)=>{
+  form.classList.remove("hidden");
+  selectOptionForm.classList.add('hidden');
+
+})
+
+selectOptionForm.addEventListener("submit", (event) => {
+  presentStep += 1;
+  changeStatusOfSteps();
+  event.preventDefault();
+  selectOptionForm.classList.add("hidden");
+  document.querySelector('.add-ons').classList.remove('hidden');
+});
+
+function changeStatusOfSteps() {
+  console.log(presentStep);
+
+  let step = steps[presentStep - 1];
+  step.querySelector("span").style.backgroundColor = "hsl(206,94%,87%)";
+  step.querySelector("span").style.color = "black";
+  step.querySelector("span").classList.remove("border");
+  if (presentStep != 1) {
+    console.log("inside");
+
+    let prev = steps[presentStep - 2];
+    prev.querySelector("span").style.backgroundColor = "transparent";
+    prev.querySelector("span").style.color = "white";
+    prev.querySelector("span").classList.add("border");
+  }
+}
 
 
+let addsON=document.querySelector('.adds-on');
+let serviceOptions=document.querySelector(".serviceOptions");
 
+serviceOptions.querySelectorAll('input').forEach((input)=>{
+  let parent=input.parentElement;
+  parent.querySelector('.cost').style.color='hsl(243, 100%, 62%)';
+  input.style.width='1.5rem';
+  input.style.height='1.5rem';
+  input.style.backgroundColor='hsl(243, 100%, 62%)';
+  console.log('Input background color:', input.style.backgroundColor);
+  if(input.checked){
+    console.log('checkd');
+    
+    parent.style.backgroundColor='hsl(229, 24%, 87%)';
+  }
+
+})

@@ -9,7 +9,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="./output.css" />
+        <link rel="stylesheet" href="./output.css">
+    <!-- <link rel="stylesheet" href="./src/output.css" /> -->
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
+
     <title>Multistep Form</title>
     <style>
         * {
@@ -21,12 +25,12 @@
 </head>
 
 <body class="flex justify-center items-center bg-[hsl(217,100%,97%)]">
-    <div class="content w-[60vw] flex bg-white rounded-[1rem] ">
+    <div class="content w-[60vw] flex bg-white rounded-[1rem]">
         <aside
             class="sidebar p-8 flex-1 basis-1/4 flex flex-col gap-6 bg-[url(./accessts/bg-sidebar-desktop.svg)] bg-cover bg-no-repeat bg-center m-4 rounded-[1rem]">
             <div class="step1 steps flex items-center gap-4 mt-4">
                 <span
-                    class="span1 rounded-[50%] text-black font-medium w-10 h-10 flex items-center justify-center bg-[hsl(206,94%,87%)]">1</span>
+                    class="span1 rounded-[50%] border text-white font-medium w-10 h-10 flex items-center justify-center">1</span>
                 <div>
                     <span class="text-white font-light text-xs">STEP 1</span>
                     <h4 class="text-white font-bold text-xs">YOUR INFO</h4>
@@ -55,7 +59,7 @@
                 </div>
             </div>
         </aside>
-        <section class="main-section flex-1 basis-3/4 ">
+        <section class="main-section flex-1 basis-3/4">
             <form method="post"
                 class="personal-info flex flex-col justify-between m-16 w-fit mx-auto gap-3 mb-8 hidden">
                 <h1 class="font-bold text-3xl">Personal Info</h1>
@@ -76,14 +80,14 @@
                     <span class="text-red-500 text-sm hidden absolute top-0 right-0 font-bold" id="emailError">This
                         field is required</span>
 
-                    <input type="email" placeholder="e.g. StephenKing@gmail.com" id="email" name="email" id="email"
+                    <input type="email" placeholder="e.g. StephenKing@gmail.com" id="email" name="email"
                         class="h-12 border border-gray-300 p-4 rounded focus:outline-none focus:border-[hsl(243,100%,62%)]" />
                 </div>
                 <div class="number flex flex-col mt-4 gap-2 relative">
                     <label for="phoneNumber" class="font-medium text-[hsl(213,96%,18%)]">Phone Number</label>
                     <span class="text-red-500 text-sm hidden absolute top-0 right-0 font-bold"
                         id="phoneNumberError">This field is required</span>
-                    <input type="number" placeholder="e.g. +1234567890" id="phoneNumber"
+                    <input type="tel" placeholder="e.g. +1234567890" id="phoneNumber"
                         class="h-12 border border-gray-300 p-4 rounded focus:outline-none focus:border-[hsl(243,100%,62%)]" />
                 </div>
 
@@ -99,66 +103,107 @@
                 </div>
             </form>
 
-            <form method="post" id="selectOption" class="flex flex-col m-16 w-3/4 mx-auto gap-3 mb-8 h-[60vh]">
+            <form method="post" id="selectOption" class="flex flex-col m-16 w-3/4 mx-auto gap-3 mb-8 hidden">
                 <h1 class="font-bold text-3xl">Select your plan</h1>
 
                 <p class="text-[hsl(231,11%,63%)]">
                     You have the option of monthly or yearly billing.
                 </p>
-                <div class="grid grid-cols-3 mt-4 gap-4 plan-option" style="height: 180px;">
+                <div class="grid grid-cols-3 mt-4 gap-4 plan-option" style="height: 180px">
                     <div
-                        class="arcade p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-[hsl(243,100%,62%)] " >
-                        
-                        <img src="./accessts/icon-arcade.svg" alt="Arcade Icon" class="object-left-top w-12 h-12 "/>
-                         <h5 clas="test"></h5>
+                        class="arcade option p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300 cursor-pointer">
+                        <img src="./accessts/icon-arcade.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
+                        <h5 class="test"></h5>
                         <p class="mt-8">Arcade</p>
                         <span class="text-sm text-[hsl(231,11%,63%)]">$9/mo</span>
-                        <span class="text-sm text-[hsl(231,11%,63%)]  freetrail hidden " >2 months free</span>
+                        <span class="text-sm freetrail hidden text-[hsl(213,96%,18%)]">2 months free</span>
                     </div>
-                    <div class="advance p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300">
-                        <img src="./accessts/icon-advanced.svg" alt="Arcade Icon" class="object-left-top w-12 h-12 " />
-                        <h5 clas="test"></h5>
+                    <div
+                        class="advance option  p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300   cursor-pointer"> 
+                        <img src="./accessts/icon-advanced.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
+                        <h5 class="test"></h5>
 
                         <p class="mt-8">Advanced</p>
                         <span class="text-sm" style="color: hsl(231, 11%, 63%)">$12/mo</span>
-                        <span class="text-sm text-[hsl(231,11%,63%)]  freetrail hidden " >2 months free</span>
-
+                        <span class="text-sm text-[hsl(213,96%,18%)] freetrail hidden">2 months free</span>
                     </div>
-                    <div class="pro p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300">
+                    <div
+                        class="pro option  p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300 cursor-pointer ">
                         <img src="./accessts/icon-pro.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
-                        <h5 clas="test"></h5>
+                        <h5 class="test"></h5>
 
                         <p class="mt-8">Pro</p>
                         <span class="text-sm" style="color: hsl(231, 11%, 63%)">$15/mo</span>
-                        <span class="text-sm text-[hsl(231,11%,63%)]  freetrail hidden" >2 months free</span>
-
+                        <span class="text-sm text-[hsl(213,96%,18%)] freetrail hidden">2 months free</span>
                     </div>
                 </div>
 
-                <div id="chooseOption"
-                    class="border p-4 flex justify-center gap-4 rounded-[1rem] bg-[hsl(231,100%,99%)] mt-8 mb-12">
-                    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Monthly</span>
+                <div id="chooseOption" class="p-4 flex justify-center gap-4 rounded-[1rem] mt-8">
+                    <span class="ms-3 text-sm font-bold monthly" style="color: hsl(225, 82%, 20%)">Monthly</span>
 
-                    <label class="inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer" id="monthlyOrYearly" />
-                        <div
-                            class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600">
-                        </div>
+                    <label class="switch">
+                        <input type="checkbox" id="monthlyOrYearly" />
+                        <span class="slider round"></span>
                     </label>
 
-                    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Yearly</span>
+                    <span class="ms-3 text-sm font-bold yearly" style="color: hsl(231, 11%, 63%)">Yearly</span>
                 </div>
 
-                <div class="foooter mt-10 flex justify-between">
-                    <button type="button" class="px-4 py-2 rounded-[0.5rem] w-auto text-[hsl(231,11%,63%)] font-medium">
+                <div class="footer mt-20 flex justify-between">
+                    <button type="button" class="py-2 rounded-[0.5rem] w-auto text-[hsl(231,11%,63%)] font-medium cursor-pointer ">
                         Go Back
                     </button>
                     <button type="submit"
-                        class="border px-4 py-2 rounded-[0.5rem] w-auto bg-[hsl(213,96%,18%)] text-white font-medium">
+                        class="border px-4 py-2 rounded-[0.5rem] w-auto bg-[hsl(213,96%,18%)] text-white font-medium cursor-pointer">
                         Next Step
                     </button>
                 </div>
             </form>
+            
+            <form method="post"
+            class="add-ons flex flex-col justify-between m-16 w-3/4 mx-auto gap-3 mb-8 ">
+            <h1 class="font-bold text-3xl">Pick add-ons</h1>
+
+            <p class="text-[hsl(231,11%,63%)]">
+                Adds-on help enhanse your gaming experience.
+            </p>
+            <div class="serviceOptions flex flex-col mt-8 gap-4 "> 
+                <div class="option1 options flex gap-4 justify-between  p-4 border rounded-[0.5rem] items-center ">
+                    <input type="checkbox" class="">
+                   <div class="flex flex-col gap-1 "> <h1 class="font-bold">Online Service</h1>
+                    <h2 class="text-[hsl(231,11%,63%)] ">Access to multiplayers games</h2></div>
+                    <p class="cost ">+$<span class="">1/mo</span></p>
+                </div>
+                <div class="option1 options flex gap-4 justify-between p-4 border rounded-[0.5rem] items-center ">
+                    <input type="checkbox">
+                   <div class="flex flex-col gap-1"> <h1 class="font-bold">Online Service</h1>
+                    <h2>Access to multiplayers games</h2></div>
+                    <p class="cost ">+$<span class="">1/mo</span></p>
+                </div>
+                <div class="option1 options flex gap-4 justify-between  p-4 border rounded-[0.5rem] items-center ">
+                    <input type="checkbox">
+                   <div class="flex flex-col gap-1"> <h1 class="font-bold">Online Service</h1>
+                    <h2>Access to multiplayers games</h2></div>
+                    <p class="cost ">+$<span class="">1/mo</span></p>
+                </div>
+               
+            </div>
+           
+            
+            <div class="footer mt-20 flex justify-between">
+                <button type="button" class="py-2 rounded-[0.5rem] w-auto text-[hsl(231,11%,63%)] font-medium cursor-pointer ">
+                    Go Back
+                </button>
+                <button type="submit"
+                    class="border px-4 py-2 rounded-[0.5rem] w-auto bg-[hsl(213,96%,18%)] text-white font-medium cursor-pointer">
+                    Next Step
+                </button>
+            </div>
+        </form>
+         
+
+            </form>
+
         </section>
     </div>
     <script src="./script.js"></script>

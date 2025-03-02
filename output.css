@@ -233,6 +233,9 @@
   .mb-8 {
     margin-bottom: calc(var(--spacing) * 8);
   }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
+  }
   .block {
     display: block;
   }
@@ -573,4 +576,7 @@ body {
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
