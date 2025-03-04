@@ -16,10 +16,35 @@
   
 }
 
+/* Remove the default checkbox styling */
+.serviceOptions .options input[type="checkbox"] {
+    appearance: none;           /* Removes default checkbox style */
+    border: 1px solid hsl(229, 24%, 87%) ;  /* Default background (when not checked) */
+    display: flex;
+     justify-content: center;
+     align-items: center; /* Inline-block to respect the container layout */
+  }
+  
+  /* Create the custom checkmark with ::before */
+  .serviceOptions .options input[type="checkbox"]:checked {
+    background-color: hsl(243, 100%, 62%);      /* Red background when checked */
+  }
+  
+  /* Add the checkmark */
+  .serviceOptions .options input[type="checkbox"]:checked::before {
+    content: '\2713';           /* Unicode character for checkmark (✓) */
+     
+    font-size: 1.5rem;            /* Font size of the checkmark */
+    color: white;           
+        /* White color for the checkmark */
+  }
+  
+ 
+  
+
 
 .serviceOptions .options{
     border-color: hsl(229, 24%, 87%);
-  
 }
 
 .serviceOptions .options input{

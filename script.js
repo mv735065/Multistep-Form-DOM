@@ -5,7 +5,9 @@ let mainSection = document.querySelector(".main-section");
 let form = document.querySelector(".personal-info");
 let steps = document.querySelectorAll(".steps");
 // body.style.height='100vh';
-// content.style.height='65vh';
+content.style.height='65vh';
+mainSection.style.height="100%";
+document.querySelectorAll('form').forEach((form)=>form.style.height="100%")
 
 let userPackage = {
   isMothly: true,
@@ -200,6 +202,8 @@ serviceOptions.addEventListener('click',(eve)=>{
   while (!div.classList.contains('options') && div !== document.body) {
     div = div.parentElement;  // Corrected to update `div`, not `eve.target`
   }
+  console.log(div);
+
   inputIsCheckedAddStyleForOptions(div.querySelector('input'),div);
   
 })
@@ -258,7 +262,6 @@ addsON.addEventListener("submit", (event) => {
 
 
 let finishingUp = document.querySelector(".finishing-up");
-
 finishingUp.addEventListener("submit", (eve) => {
   eve.preventDefault();
   finishingUp.classList.add("hidden");
@@ -283,8 +286,6 @@ function addPaymengDetalisinUI() {
   let sum = 0;
   paymentDetails.style.backgroundColor = "hsl(231, 100%, 99%)";
 
-  paymentDetails.querySelector("div").style.borderBottomColor =
-    "hsl(231,11%,63%)";
   let paymentPackage = paymentDetails.querySelector(".package");
 
   let className = paymentPackage.classList[0];
@@ -308,6 +309,7 @@ function usersExtraServices(sum) {
   
 
   let monthly = userPackage.isMothly;
+  let addBorder=false;
 
   Object.keys(usersAddsOn).forEach((ele) => {
     let service = paymentDetails.querySelector(`.${ele}`);
@@ -320,6 +322,7 @@ function usersExtraServices(sum) {
       const cost = addsOnServicesCost[ele] * (monthly ? 1 : 10);
       sum += cost;
       span.innerText = `+${cost}${monthly ? "/mo" : "/yr"}`;
+      addBorder=true;
     } else {
       service.classList.add("hidden");
     }
@@ -330,6 +333,14 @@ function usersExtraServices(sum) {
   document.querySelector(".totalAmount").innerText = `+${sum}${
     monthly ? "/mo" : "/yr"
   }`;
+  if(addBorder){
+paymentDetails.querySelector('.package').style.borderBottom='1px solid hsl(229, 24%, 87%)';
+
+  }
+  else{
+paymentDetails.querySelector('.package').style.borderBottom='none';
+    
+  }
 }
 
 paymentDetails.querySelector('.package span').addEventListener('click',(eve)=>{
