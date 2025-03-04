@@ -11,7 +11,25 @@
   
 }
 
+.serviceOptions .options:hover{
+    border-color: hsl(243, 100%, 62%);
+  
+}
 
+
+.serviceOptions .options{
+    border-color: hsl(229, 24%, 87%);
+  
+}
+
+.serviceOptions .options input{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.paymentDetails .package-details {
+    border-bottom: 1px solid hsl(229, 24%, 87%);
+}
 .switch {
     position: relative;
     display: inline-block;

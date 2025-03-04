@@ -9,9 +9,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
         rel="stylesheet" />
-        <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="./output.css" />
     <!-- <link rel="stylesheet" href="./src/output.css" /> -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
 
     <title>Multistep Form</title>
@@ -24,8 +24,8 @@
     </style>
 </head>
 
-<body class="flex justify-center items-center bg-[hsl(217,100%,97%)]">
-    <div class="content w-[60vw] flex bg-white rounded-[1rem]">
+<body class="flex justify-center items-center bg-[hsl(217,100%,97%)] ">
+    <div class="content w-[60vw] flex bg-white rounded-[1rem] ">
         <aside
             class="sidebar p-8 flex-1 basis-1/4 flex flex-col gap-6 bg-[url(./accessts/bg-sidebar-desktop.svg)] bg-cover bg-no-repeat bg-center m-4 rounded-[1rem]">
             <div class="step1 steps flex items-center gap-4 mt-4">
@@ -60,8 +60,7 @@
             </div>
         </aside>
         <section class="main-section flex-1 basis-3/4">
-            <form method="post"
-                class="personal-info flex flex-col justify-between m-16 w-fit mx-auto gap-3 mb-8 hidden">
+            <form method="post" class="personal-info flex flex-col justify-between m-16 w-fit mx-auto gap-3 mb-8 ">
                 <h1 class="font-bold text-3xl">Personal Info</h1>
 
                 <p class="text-[hsl(231,11%,63%)]">
@@ -119,7 +118,7 @@
                         <span class="text-sm freetrail hidden text-[hsl(213,96%,18%)]">2 months free</span>
                     </div>
                     <div
-                        class="advance option  p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300   cursor-pointer"> 
+                        class="advance option p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300 cursor-pointer">
                         <img src="./accessts/icon-advanced.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
                         <h5 class="test"></h5>
 
@@ -128,7 +127,7 @@
                         <span class="text-sm text-[hsl(213,96%,18%)] freetrail hidden">2 months free</span>
                     </div>
                     <div
-                        class="pro option  p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300 cursor-pointer ">
+                        class="pro option p-4 flex flex-col gap-2 justify-start border rounded-[1rem] border-gray-300 cursor-pointer">
                         <img src="./accessts/icon-pro.svg" alt="Arcade Icon" class="object-left-top w-12 h-12" />
                         <h5 class="test"></h5>
 
@@ -150,7 +149,8 @@
                 </div>
 
                 <div class="footer mt-20 flex justify-between">
-                    <button type="button" class="py-2 rounded-[0.5rem] w-auto text-[hsl(231,11%,63%)] font-medium cursor-pointer ">
+                    <button type="button"
+                        class="py-2 rounded-[0.5rem] w-auto text-[hsl(231,11%,63%)] font-medium cursor-pointer">
                         Go Back
                     </button>
                     <button type="submit"
@@ -159,51 +159,121 @@
                     </button>
                 </div>
             </form>
-            
-            <form method="post"
-            class="add-ons flex flex-col justify-between m-16 w-3/4 mx-auto gap-3 mb-8 ">
-            <h1 class="font-bold text-3xl">Pick add-ons</h1>
 
-            <p class="text-[hsl(231,11%,63%)]">
-                Adds-on help enhanse your gaming experience.
-            </p>
-            <div class="serviceOptions flex flex-col mt-8 gap-4 "> 
-                <div class="option1 options flex gap-4 justify-between  p-4 border rounded-[0.5rem] items-center ">
-                    <input type="checkbox" class="">
-                   <div class="flex flex-col gap-1 "> <h1 class="font-bold">Online Service</h1>
-                    <h2 class="text-[hsl(231,11%,63%)] ">Access to multiplayers games</h2></div>
-                    <p class="cost ">+$<span class="">1/mo</span></p>
-                </div>
-                <div class="option1 options flex gap-4 justify-between p-4 border rounded-[0.5rem] items-center ">
-                    <input type="checkbox">
-                   <div class="flex flex-col gap-1"> <h1 class="font-bold">Online Service</h1>
-                    <h2>Access to multiplayers games</h2></div>
-                    <p class="cost ">+$<span class="">1/mo</span></p>
-                </div>
-                <div class="option1 options flex gap-4 justify-between  p-4 border rounded-[0.5rem] items-center ">
-                    <input type="checkbox">
-                   <div class="flex flex-col gap-1"> <h1 class="font-bold">Online Service</h1>
-                    <h2>Access to multiplayers games</h2></div>
-                    <p class="cost ">+$<span class="">1/mo</span></p>
-                </div>
-               
-            </div>
-           
-            
-            <div class="footer mt-20 flex justify-between">
-                <button type="button" class="py-2 rounded-[0.5rem] w-auto text-[hsl(231,11%,63%)] font-medium cursor-pointer ">
-                    Go Back
-                </button>
-                <button type="submit"
-                    class="border px-4 py-2 rounded-[0.5rem] w-auto bg-[hsl(213,96%,18%)] text-white font-medium cursor-pointer">
-                    Next Step
-                </button>
-            </div>
-        </form>
-         
+            <form method="post" class="add-ons flex flex-col justify-between m-16 w-3/4 mx-auto gap-3 mb-8 hidden">
+                <h1 class="font-bold text-3xl">Pick add-ons</h1>
 
+                <p class="text-[hsl(231,11%,63%)]">
+                    Adds-on help enhanse your gaming experience.
+                </p>
+                <div class="serviceOptions flex flex-col mt-4 gap-4">
+                    <div
+                        class="online options flex gap-4 justify-between p-6 border rounded-[0.5rem] items-center cursor-pointer">
+                        <input type="checkbox" class="" />
+                        <div class="flex flex-col gap-1 text-[hsl(213,96%,18%)]">
+                            <h1 class="font-bold">Online Service</h1>
+                            <h2 class="text-[hsl(231,11%,63%)]">
+                                Access to multiplayers games
+                            </h2>
+                        </div>
+                        <p class="cost font-medium">+$<span class="">1/mo</span></p>
+                    </div>
+                    <div
+                        class="storage options flex gap-4 justify-between p-6 border rounded-[0.5rem] items-center cursor-pointer">
+                        <input type="checkbox" class="cursor-pointer" />
+                        <div class="flex flex-col gap-1 text-[hsl(213,96%,18%)]">
+                            <h1 class="font-bold">Larger Storage</h1>
+                            <h2 class="text-[hsl(231,11%,63%)]">
+                                Extra 1TB of cloud service
+                            </h2>
+                        </div>
+
+                        <p class="cost font-medium">+$<span class="">2/mo</span></p>
+                    </div>
+                    <div
+                        class="custom options flex gap-4 justify-between p-6 border rounded-[0.5rem] items-center cursor-pointer">
+                        <input type="checkbox" />
+                        <div class="flex flex-col gap-1 text-[hsl(213,96%,18%)]">
+                            <h1 class="font-bold">Customizable profile</h1>
+                            <h2 class="text-[hsl(231,11%,63%)]">
+                                Custom theme on your profile
+                            </h2>
+                        </div>
+
+                        <p class="cost font-medium">+$<span class="">2/mo</span></p>
+                    </div>
+                </div>
+
+                <div class="footer mt-16 flex justify-between">
+                    <button type="button"
+                        class="py-2 rounded-[0.5rem] w-auto text-[hsl(231,11%,63%)] font-medium cursor-pointer">
+                        Go Back
+                    </button>
+                    <button type="submit"
+                        class="next-step border px-4 py-2 rounded-[0.5rem] w-auto bg-[hsl(213,96%,18%)] text-white font-medium cursor-pointer">
+                        Next Step
+                    </button>
+                </div>
             </form>
+            <form method="post" class="finishing-up flex flex-col justify-between m-16 w-3/4 mx-auto gap-3 mb-8 hidden">
+                <h1 class="font-bold text-3xl text-[hsl(213,96%,18%)]">
+                    Finishing up
+                </h1>
 
+                <p class="text-[hsl(231,11%,63%)]">
+                    Double-check everything looks Ok before confirmin
+                </p>
+                <div class="paymentDetails flex flex-col gap-4 mt-8 p-4 rounded">
+                    <div class="package flex justify-between items-center p-4 border-b-[hsl(231,11%,63%)] px-4">
+                        <div class="flex flex-col gap-2">
+                            <p class="font-bold text-[hsl(213,96%,18%)]">Arcade(Monthly)</p>
+                            <span class="underline text-[hsl(231,11%,63%)] cursor-pointer">Change</span>
+                        </div>
+                        <span class="cost font-bold text-[hsl(213,96%,18%)]">$9/mo</span>
+                    </div>
+                    <div class="online flex justify-between items-center px-4">
+                        <p class="text-[hsl(231,11%,63%)]">online service</p>
+                        <span class="cost text-[hsl(213,96%,18%)]">+$9/mo</span>
+                    </div>
+                    <div class="storage flex justify-between items-center px-4">
+                        <p class="text-[hsl(231,11%,63%)]">Larger storage</p>
+                        <span class="cost text-[hsl(213,96%,18%)]">+$9/mo</span>
+                    </div>
+                    <div class="custom flex justify-between items-center px-4">
+                        <p class="text-[hsl(231,11%,63%)]">Custom Profile</p>
+                        <span class="cost text-[hsl(213,96%,18%)]">+$9/mo</span>
+                    </div>
+                </div>
+                <div class="totalAmountDetails flex justify-between p-8 font-bold items-center">
+                    <p class="text-[hsl(231,11%,63%)] text-sm">
+                        Total <span>(Per month)</span>
+                    </p>
+                    <p class="totalAmount text-[hsl(243,100%,62%)] font-bold text-[1.5rem]">
+                        +$12/mo
+                    </p>
+                </div>
+
+                <div class="footer mt-16 flex justify-between">
+                    <button type="button"
+                        class="goBack py-2 rounded-[0.5rem] w-auto text-[hsl(231,11%,63%)] font-medium cursor-pointer">
+                        Go Back
+                    </button>
+                    <button type="submit"
+                        class="next-step border px-4 py-2 rounded-[0.5rem] w-auto bg-[hsl(213,96%,18%)] text-white font-medium cursor-pointer">
+                        Next Step
+                    </button>
+                </div>
+            </form>
+            <form method="post"
+                class="thankyou-form flex flex-col justify-between  items-center mt-20 w-3/4 mx-auto gap-3 mb-8 p-12 hidden">
+                <img src="./accessts/icon-thank-you.svg" alt="Thank You" class="thankyou-image mt-20">
+                <h1 class="mt-4 text-3xl font-bold mb-4 text-[hsl(213,96%,18%)]">Thank you!</h1>
+                <p class="mb-40 text-center">
+                    Thanks for confirming your subscription! We hope you have fun using
+                    our platform. If you ever need support, please feel free to email us
+                    at support@loremgaming.com.
+                </p>
+            </form>
         </section>
     </div>
     <script src="./script.js"></script>

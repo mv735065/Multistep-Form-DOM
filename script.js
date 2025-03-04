@@ -4,8 +4,10 @@ let sidebar = document.querySelector(".sidebar");
 let mainSection = document.querySelector(".main-section");
 let form = document.querySelector(".personal-info");
 let steps = document.querySelectorAll(".steps");
+// body.style.height='100vh';
+// content.style.height='65vh';
 
-let userData = {
+let userPackage = {
   isMothly: true,
   package: "arcade",
 };
@@ -15,13 +17,24 @@ let packageDetails = {
   pro: 15,
 };
 
+let usersAddsOn = {
+  online: false,
+  storage: false,
+  custom: false,
+};
+
+let addsOnServicesCost = {
+  online: 1,
+  storage: 2,
+  custom: 2,
+};
+
 let presentStep = 1;
 changeStatusOfSteps();
 
 let selectOptionForm = document.querySelector("#selectOption");
 
 form.addEventListener("submit", (event) => {
-  console.log("clicked");
   event.preventDefault();
   let isValid = true;
 
@@ -66,7 +79,7 @@ form.addEventListener("submit", (event) => {
 
     selectOptionForm.classList.remove("hidden");
 
-    presentStep += 1;
+    presentStep = 2;
     changeStatusOfSteps();
   }
 });
@@ -93,7 +106,7 @@ planOption.addEventListener("click", (event) => {
   }
 
   let option = parent.classList[0];
-  userData.package = option;
+  userPackage.package = option;
   changeBorderOfPackages(parent);
 });
 
@@ -109,7 +122,7 @@ function changeBorderOfPackages(parent) {
 
 chooseOption.addEventListener("click", (event) => {
   if (monthlyOrYearlyInput.checked) {
-    userData["isMothly"] = false;
+    userPackage["isMothly"] = false;
     proSpan.innerText = "$150/yr";
     arcadeSpan.innerText = "$90/yr";
     advanceSpan.innerText = "$120/yr";
@@ -123,7 +136,7 @@ chooseOption.addEventListener("click", (event) => {
       test.classList.add("hidden");
     }
   } else {
-    userData["isMothly"] = true;
+    userPackage["isMothly"] = true;
     for (let i = 0; i < 3; i++) {
       let element = planOptionDiv[i].querySelector(".freetrail");
       element.classList.add("hidden");
@@ -139,54 +152,189 @@ chooseOption.addEventListener("click", (event) => {
   }
 });
 
-let selectOptionFormBackButton=selectOptionForm.querySelector('.footer button');
+let selectOptionFormBackButton =
+  selectOptionForm.querySelector(".footer button");
 
-selectOptionFormBackButton.addEventListener('click',(event)=>{
+selectOptionFormBackButton.addEventListener("click", (event) => {
+  presentStep = 1;
   form.classList.remove("hidden");
-  selectOptionForm.classList.add('hidden');
+  selectOptionForm.classList.add("hidden");
+  changeStatusOfSteps();
 
-})
+});
 
 selectOptionForm.addEventListener("submit", (event) => {
-  presentStep += 1;
+  presentStep = 3;
   changeStatusOfSteps();
   event.preventDefault();
   selectOptionForm.classList.add("hidden");
-  document.querySelector('.add-ons').classList.remove('hidden');
+  document.querySelector(".add-ons").classList.remove("hidden");
+  addsONOptionsDetails();
+
 });
 
 function changeStatusOfSteps() {
-  console.log(presentStep);
-
-  let step = steps[presentStep - 1];
-  step.querySelector("span").style.backgroundColor = "hsl(206,94%,87%)";
-  step.querySelector("span").style.color = "black";
-  step.querySelector("span").classList.remove("border");
-  if (presentStep != 1) {
-    console.log("inside");
-
-    let prev = steps[presentStep - 2];
-    prev.querySelector("span").style.backgroundColor = "transparent";
-    prev.querySelector("span").style.color = "white";
-    prev.querySelector("span").classList.add("border");
+  for(let i=0;i<4;i++){
+    let step = steps[i];
+    if(i==presentStep-1){
+     
+      step.querySelector("span").style.backgroundColor = "hsl(206,94%,87%)";
+      step.querySelector("span").style.color = "black";
+      step.querySelector("span").classList.remove("border");
+    }
+    else{
+      step.querySelector("span").style.backgroundColor = "transparent";
+      step.querySelector("span").style.color = "white";
+      step.querySelector("span").classList.add("border");
+    }
   }
+  
 }
 
+let addsON = document.querySelector(".add-ons");
+let serviceOptions = document.querySelector(".serviceOptions");
 
-let addsON=document.querySelector('.adds-on');
-let serviceOptions=document.querySelector(".serviceOptions");
-
-serviceOptions.querySelectorAll('input').forEach((input)=>{
-  let parent=input.parentElement;
-  parent.querySelector('.cost').style.color='hsl(243, 100%, 62%)';
-  input.style.width='1.5rem';
-  input.style.height='1.5rem';
-  input.style.backgroundColor='hsl(243, 100%, 62%)';
-  console.log('Input background color:', input.style.backgroundColor);
-  if(input.checked){
-    console.log('checkd');
-    
-    parent.style.backgroundColor='hsl(229, 24%, 87%)';
+serviceOptions.addEventListener('click',(eve)=>{
+  let div=eve.target;
+  
+  while (!div.classList.contains('options') && div !== document.body) {
+    div = div.parentElement;  // Corrected to update `div`, not `eve.target`
   }
+  inputIsCheckedAddStyleForOptions(div.querySelector('input'),div);
+  
+})
 
+function addsONOptionsDetails() {
+  let options = serviceOptions.querySelectorAll(".options");
+
+  options.forEach((option) => {
+    let className = option.classList[0];
+
+    if (!userPackage.isMothly) {
+      option.querySelector(".cost span").innerText = `${
+        addsOnServicesCost[className] * 10
+      }/yr`;
+    } else {
+      option.querySelector(".cost span").innerText = `${
+        addsOnServicesCost[className] * 1
+      }/mo`;
+    }
+    
+  });
+  
+}
+addsON.querySelector(".footer button").addEventListener("click", (event) => {
+  selectOptionForm.classList.remove("hidden");
+  addsON.classList.add("hidden");
+  presentStep = 2;
+  changeStatusOfSteps();
+
+});
+
+function inputIsCheckedAddStyleForOptions(input, parent) {
+  let className = parent.classList[0];
+  if (input.checked) {
+    usersAddsOn[className] = false;
+    input.checked = false;
+    parent.style.borderColor = "hsl(229, 24%, 87%)";
+    parent.style.backgroundColor = "transparent";
+  } else {
+    input.checked = true;
+    usersAddsOn[className] = true;
+    parent.style.borderColor = " hsl(243, 100%, 62%)";
+    parent.style.backgroundColor = "hsl(231, 100%, 99%)";
+  }
+}
+//console
+addsON.addEventListener("submit", (event) => {
+  presentStep = 4;
+  changeStatusOfSteps();
+  event.preventDefault();
+  addsON.classList.add("hidden");
+  document.querySelector(".finishing-up").classList.remove("hidden");
+
+  addPaymengDetalisinUI();
+});
+
+
+let finishingUp = document.querySelector(".finishing-up");
+
+finishingUp.addEventListener("submit", (eve) => {
+  eve.preventDefault();
+  finishingUp.classList.add("hidden");
+  document.querySelector(".thankyou-form").classList.remove("hidden");
+});
+
+finishingUp.querySelector(".goBack").addEventListener("click", (eve) => {
+  addsON.classList.remove("hidden");
+  finishingUp.classList.add("hidden");
+  addPaymengDetalisinUI();
+  presentStep = 3;
+  changeStatusOfSteps();
+
+});
+
+let paymentDetails = document.querySelector(".paymentDetails");
+
+let totalAmountNeedToPay = 0;
+
+function addPaymengDetalisinUI() {
+  
+  let sum = 0;
+  paymentDetails.style.backgroundColor = "hsl(231, 100%, 99%)";
+
+  paymentDetails.querySelector("div").style.borderBottomColor =
+    "hsl(231,11%,63%)";
+  let paymentPackage = paymentDetails.querySelector(".package");
+
+  let className = paymentPackage.classList[0];
+  let monthly = userPackage.isMothly;
+  let packageName = userPackage.package;
+  let transformedStr =
+    packageName.charAt(0).toUpperCase() + packageName.slice(1).toLowerCase();
+  let packageCostItem = packageDetails[packageName] * (monthly ? 1 : 10);
+  sum += packageCostItem;
+  if (className === "package") {
+    paymentPackage.querySelector("p").innerText = `${transformedStr} ${
+      monthly ? "(Monthly)" : "(Yearly)"
+    }`;
+    paymentPackage.querySelector(".cost").innerText = `  ${packageCostItem}${
+      monthly ? "/mo" : "/yr"
+    }`;
+  }
+  usersExtraServices(sum);
+}
+function usersExtraServices(sum) {
+  
+
+  let monthly = userPackage.isMothly;
+
+  Object.keys(usersAddsOn).forEach((ele) => {
+    let service = paymentDetails.querySelector(`.${ele}`);
+    
+    if (usersAddsOn[ele]) {
+    service.classList.remove("hidden");
+
+      let span = service.querySelector("span");
+       
+      const cost = addsOnServicesCost[ele] * (monthly ? 1 : 10);
+      sum += cost;
+      span.innerText = `+${cost}${monthly ? "/mo" : "/yr"}`;
+    } else {
+      service.classList.add("hidden");
+    }
+  });
+  document.querySelector(".totalAmountDetails span").innerText = `${
+    monthly ? "(Monthly)" : "(Yearly)"
+  }`;
+  document.querySelector(".totalAmount").innerText = `+${sum}${
+    monthly ? "/mo" : "/yr"
+  }`;
+}
+
+paymentDetails.querySelector('.package span').addEventListener('click',(eve)=>{
+  finishingUp.classList.add("hidden");
+  selectOptionForm.classList.remove("hidden");
+  presentStep=2;
+  changeStatusOfSteps();
 })
