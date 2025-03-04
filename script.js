@@ -294,7 +294,7 @@ function addPaymengDetalisinUI() {
   let transformedStr =
     packageName.charAt(0).toUpperCase() + packageName.slice(1).toLowerCase();
   let packageCostItem = packageDetails[packageName] * (monthly ? 1 : 10);
-  sum += packageCostItem;
+  sum += parseInt(packageCostItem);
   if (className === "package") {
     paymentPackage.querySelector("p").innerText = `${transformedStr} ${
       monthly ? "(Monthly)" : "(Yearly)"
@@ -320,7 +320,7 @@ function usersExtraServices(sum) {
       let span = service.querySelector("span");
        
       const cost = addsOnServicesCost[ele] * (monthly ? 1 : 10);
-      sum += cost;
+      sum += parseInt(cost);
       span.innerText = `+${cost}${monthly ? "/mo" : "/yr"}`;
       addBorder=true;
     } else {
@@ -344,6 +344,7 @@ paymentDetails.querySelector('.package').style.borderBottom='none';
 }
 
 paymentDetails.querySelector('.package span').addEventListener('click',(eve)=>{
+  eve.target.style.color='hsl(243, 100%, 62%)';
   finishingUp.classList.add("hidden");
   selectOptionForm.classList.remove("hidden");
   presentStep=2;
