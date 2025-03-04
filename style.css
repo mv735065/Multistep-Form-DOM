@@ -4,12 +4,12 @@
 
 
 .plan-option div:hover{
-    border-color: hsl(243, 100%, 62%);
+    border-color: hsl(243, 100%, 62%) !important;
   
 }
 
 .serviceOptions .options:hover{
-    border-color: hsl(243, 100%, 62%);
+    border-color: hsl(243, 100%, 62%) !important;
   
 }
 
