@@ -1,8 +1,7 @@
-let body = document.body;
 let content = document.querySelector(".content");
 let sidebar = document.querySelector(".sidebar");
 let mainSection = document.querySelector(".main-section");
-let form = document.querySelector(".personal-info");
+let firstForm = document.querySelector(".personal-info");
 let steps = document.querySelectorAll(".steps");
 // body.style.height='100vh';
 content.style.height='65vh';
@@ -36,7 +35,7 @@ changeStatusOfSteps();
 
 let selectOptionForm = document.querySelector("#selectOption");
 
-form.addEventListener("submit", (event) => {
+firstForm.addEventListener("submit", (event) => {
   event.preventDefault();
   let isValid = true;
 
@@ -77,7 +76,7 @@ form.addEventListener("submit", (event) => {
   }
 
   if (isValid) {
-    form.classList.add("hidden");
+    firstForm.classList.add("hidden");
 
     selectOptionForm.classList.remove("hidden");
 
@@ -90,9 +89,7 @@ let monthlyOrYearlyInput = document.querySelector("#monthlyOrYearly");
 
 let chooseOption = document.querySelector("#chooseOption");
 chooseOption.style.backgroundColor = "hsl(231, 100%, 99%)";
-let arcadeSpan = document.querySelector(".arcade span");
-let advanceSpan = document.querySelector(".advance span");
-let proSpan = document.querySelector(".pro span");
+
 
 let planOptionDiv = document.querySelectorAll(".plan-option div");
 changeBorderOfPackages(planOptionDiv[0]);
@@ -112,17 +109,11 @@ planOption.addEventListener("click", (event) => {
   changeBorderOfPackages(parent);
 });
 
-function changeBorderOfPackages(parent) {
-  planOptionDiv.forEach((div) => {
-    if (div == parent) {
-      div.style.borderColor = "hsl(243, 100%, 62%)";
-    } else {
-      div.style.borderColor = "hsl(229, 24%, 87%)";
-    }
-  });
-}
 
 chooseOption.addEventListener("click", (event) => {
+  let arcadeSpan = document.querySelector(".arcade span");
+let advanceSpan = document.querySelector(".advance span");
+let proSpan = document.querySelector(".pro span");
   if (monthlyOrYearlyInput.checked) {
     userPackage["isMothly"] = false;
     proSpan.innerText = "$150/yr";
@@ -159,7 +150,7 @@ let selectOptionFormBackButton =
 
 selectOptionFormBackButton.addEventListener("click", (event) => {
   presentStep = 1;
-  form.classList.remove("hidden");
+  firstForm.classList.remove("hidden");
   selectOptionForm.classList.add("hidden");
   changeStatusOfSteps();
 
@@ -171,27 +162,10 @@ selectOptionForm.addEventListener("submit", (event) => {
   event.preventDefault();
   selectOptionForm.classList.add("hidden");
   document.querySelector(".add-ons").classList.remove("hidden");
-  addsONOptionsDetails();
+  loadAddsOnOptionsDetails();
 
 });
 
-function changeStatusOfSteps() {
-  for(let i=0;i<4;i++){
-    let step = steps[i];
-    if(i==presentStep-1){
-     
-      step.querySelector("span").style.backgroundColor = "hsl(206,94%,87%)";
-      step.querySelector("span").style.color = "black";
-      step.querySelector("span").classList.remove("border");
-    }
-    else{
-      step.querySelector("span").style.backgroundColor = "transparent";
-      step.querySelector("span").style.color = "white";
-      step.querySelector("span").classList.add("border");
-    }
-  }
-  
-}
 
 let addsON = document.querySelector(".add-ons");
 let serviceOptions = document.querySelector(".serviceOptions");
@@ -200,7 +174,7 @@ serviceOptions.addEventListener('click',(eve)=>{
   let div=eve.target;
   
   while (!div.classList.contains('options') && div !== document.body) {
-    div = div.parentElement;  // Corrected to update `div`, not `eve.target`
+    div = div.parentElement;  
   }
   console.log(div);
 
@@ -208,7 +182,7 @@ serviceOptions.addEventListener('click',(eve)=>{
   
 })
 
-function addsONOptionsDetails() {
+function loadAddsOnOptionsDetails() {
   let options = serviceOptions.querySelectorAll(".options");
 
   options.forEach((option) => {
@@ -235,20 +209,6 @@ addsON.querySelector(".footer button").addEventListener("click", (event) => {
 
 });
 
-function inputIsCheckedAddStyleForOptions(input, parent) {
-  let className = parent.classList[0];
-  if (input.checked) {
-    usersAddsOn[className] = false;
-    input.checked = false;
-    parent.style.borderColor = "hsl(229, 24%, 87%)";
-    parent.style.backgroundColor = "transparent";
-  } else {
-    input.checked = true;
-    usersAddsOn[className] = true;
-    parent.style.borderColor = " hsl(243, 100%, 62%)";
-    parent.style.backgroundColor = "hsl(231, 100%, 99%)";
-  }
-}
 //console
 addsON.addEventListener("submit", (event) => {
   presentStep = 4;
@@ -257,7 +217,7 @@ addsON.addEventListener("submit", (event) => {
   addsON.classList.add("hidden");
   document.querySelector(".finishing-up").classList.remove("hidden");
 
-  addPaymengDetalisinUI();
+  LoadDocAndAddPaymengDetalis();
 });
 
 
@@ -271,7 +231,7 @@ finishingUp.addEventListener("submit", (eve) => {
 finishingUp.querySelector(".goBack").addEventListener("click", (eve) => {
   addsON.classList.remove("hidden");
   finishingUp.classList.add("hidden");
-  addPaymengDetalisinUI();
+  LoadDocAndAddPaymengDetalis();
   presentStep = 3;
   changeStatusOfSteps();
 
@@ -281,7 +241,7 @@ let paymentDetails = document.querySelector(".paymentDetails");
 
 let totalAmountNeedToPay = 0;
 
-function addPaymengDetalisinUI() {
+function LoadDocAndAddPaymengDetalis() {
   
   let sum = 0;
   paymentDetails.style.backgroundColor = "hsl(231, 100%, 99%)";
@@ -343,10 +303,59 @@ paymentDetails.querySelector('.package').style.borderBottom='none';
   }
 }
 
-paymentDetails.querySelector('.package span').addEventListener('click',(eve)=>{
+let changeGoBackToStep2=paymentDetails.querySelector('.package span')
+
+
+changeGoBackToStep2.addEventListener('click',(eve)=>{
   eve.target.style.color='hsl(243, 100%, 62%)';
   finishingUp.classList.add("hidden");
   selectOptionForm.classList.remove("hidden");
   presentStep=2;
   changeStatusOfSteps();
 })
+
+function changeBorderOfPackages(parent) {
+  planOptionDiv.forEach((div) => {
+    if (div == parent) {
+      div.style.borderColor = "hsl(243, 100%, 62%)";
+    } else {
+      div.style.borderColor = "hsl(229, 24%, 87%)";
+    }
+  });
+}
+
+
+
+function changeStatusOfSteps() {
+  for(let i=0;i<4;i++){
+    let step = steps[i];
+    if(i==presentStep-1){
+     
+      step.querySelector("span").style.backgroundColor = "hsl(206,94%,87%)";
+      step.querySelector("span").style.color = "black";
+      step.querySelector("span").classList.remove("border");
+    }
+    else{
+      step.querySelector("span").style.backgroundColor = "transparent";
+      step.querySelector("span").style.color = "white";
+      step.querySelector("span").classList.add("border");
+    }
+  }
+  
+}
+
+
+function inputIsCheckedAddStyleForOptions(input, parent) {
+  let className = parent.classList[0];
+  if (input.checked) {
+    usersAddsOn[className] = false;
+    input.checked = false;
+    parent.style.borderColor = "hsl(229, 24%, 87%)";
+    parent.style.backgroundColor = "transparent";
+  } else {
+    input.checked = true;
+    usersAddsOn[className] = true;
+    parent.style.borderColor = " hsl(243, 100%, 62%)";
+    parent.style.backgroundColor = "hsl(231, 100%, 99%)";
+  }
+}
