@@ -1,7 +1,9 @@
 
 /* @tailwind utilities; */
 
-
+.personal-info div input:hover{
+    border-color: hsl(243, 100%, 62%) !important;
+}
 
 .plan-option div:hover{
     border-color: hsl(243, 100%, 62%) !important;
