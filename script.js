@@ -176,7 +176,6 @@ serviceOptions.addEventListener('click',(eve)=>{
   while (!div.classList.contains('options') && div !== document.body) {
     div = div.parentElement;  
   }
-  console.log(div);
 
   inputIsCheckedAddStyleForOptions(div.querySelector('input'),div);
   
@@ -209,7 +208,6 @@ addsON.querySelector(".footer button").addEventListener("click", (event) => {
 
 });
 
-//console
 addsON.addEventListener("submit", (event) => {
   presentStep = 4;
   changeStatusOfSteps();
@@ -273,7 +271,7 @@ function usersExtraServices(sum) {
 
   Object.keys(usersAddsOn).forEach((ele) => {
     let service = paymentDetails.querySelector(`.${ele}`);
-    
+    if(service.classList[0]==='package') return;
     if (usersAddsOn[ele]) {
     service.classList.remove("hidden");
 
@@ -281,6 +279,7 @@ function usersExtraServices(sum) {
        
       const cost = addsOnServicesCost[ele] * (monthly ? 1 : 10);
       sum += parseInt(cost);
+      if(span.classList[0]==='package-change') return;
       span.innerText = `+${cost}${monthly ? "/mo" : "/yr"}`;
       addBorder=true;
     } else {
@@ -324,7 +323,7 @@ function changeBorderOfPackages(parent) {
   });
 }
 
-
+// console
 
 function changeStatusOfSteps() {
   for(let i=0;i<4;i++){
