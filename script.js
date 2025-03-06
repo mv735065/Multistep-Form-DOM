@@ -6,7 +6,9 @@ let steps = document.querySelectorAll(".steps");
 // body.style.height='100vh';
 content.style.height='65vh';
 mainSection.style.height="100%";
-document.querySelectorAll('form').forEach((form)=>form.style.height="100%")
+document.querySelectorAll('form').forEach((form)=>form.style.height="100%");
+
+let userDetails={};
 
 let userPackage = {
   isMothly: true,
@@ -35,6 +37,8 @@ changeStatusOfSteps();
 
 let selectOptionForm = document.querySelector("#selectOption");
 
+//validating first form
+
 firstForm.addEventListener("submit", (event) => {
   event.preventDefault();
   let isValid = true;
@@ -52,7 +56,6 @@ firstForm.addEventListener("submit", (event) => {
   }
 
   let email = document.getElementById("email").value.trim();
-  let emailError = document.getElementById("emailError");
   let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
     emailError.classList.remove("hidden");
@@ -76,6 +79,10 @@ firstForm.addEventListener("submit", (event) => {
   }
 
   if (isValid) {
+    userDetails['name']=name;
+    userDetails['email']=email;
+    userDetails['phone']=phone;
+
     firstForm.classList.add("hidden");
 
     selectOptionForm.classList.remove("hidden");
@@ -85,7 +92,8 @@ firstForm.addEventListener("submit", (event) => {
   }
 });
 
-let monthlyOrYearlyInput = document.querySelector("#monthlyOrYearly");
+
+// 2nd form Selecting-plan
 
 let chooseOption = document.querySelector("#chooseOption");
 chooseOption.style.backgroundColor = "hsl(231, 100%, 99%)";
@@ -111,9 +119,11 @@ planOption.addEventListener("click", (event) => {
 
 
 chooseOption.addEventListener("click", (event) => {
+let monthlyOrYearlyInput = document.querySelector("#monthlyOrYearly");
   let arcadeSpan = document.querySelector(".arcade span");
 let advanceSpan = document.querySelector(".advance span");
 let proSpan = document.querySelector(".pro span");
+
   if (monthlyOrYearlyInput.checked) {
     userPackage["isMothly"] = false;
     proSpan.innerText = "$150/yr";
@@ -166,6 +176,7 @@ selectOptionForm.addEventListener("submit", (event) => {
 
 });
 
+// 3rd form Add-ons
 
 let addsON = document.querySelector(".add-ons");
 let serviceOptions = document.querySelector(".serviceOptions");
@@ -218,6 +229,7 @@ addsON.addEventListener("submit", (event) => {
   LoadDocAndAddPaymengDetalis();
 });
 
+// 4th form - finishing total ill
 
 let finishingUp = document.querySelector(".finishing-up");
 finishingUp.addEventListener("submit", (eve) => {
